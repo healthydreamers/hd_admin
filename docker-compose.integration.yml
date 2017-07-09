@@ -1,0 +1,49 @@
+version: '2.1'
+services:
+  admin:
+    container_name: hd_admin
+    build: .
+    command: bash -c 'foreman start -f Procfile.dev'
+    ports:
+      - "3001:3001"
+    # depends_on:
+    #   - db
+    #   - redis
+    volumes:
+      - .:/webapps/admin:rw
+    env_file:
+      - .env.dev
+  # db:
+  #   container_name: db
+  #   image: postgres:latest
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - db:/var/lib/postgresql/data
+  #   environment:
+  #     POSTGRES_USER: 'hd'
+  #     POSTGRES_PASSWORD: 'hd'
+
+  # redis:
+  #   container_name: redis
+  #   image: 'redis:3.2.8-alpine'
+  #   command: redis-server --requirepass hd
+  #   ports:
+  #     - '6379:6379'
+  #   volumes:
+  #     - 'redis:/var/lib/redis/data'
+  
+  # sidekiq:
+  #   depends_on:
+  #     - db
+  #     - redis
+  #   build: .
+  #   command: sidekiq -C config/sidekiq.yml
+  #   volumes:
+  #     - '.:/webapps/admin'
+  #   env_file:
+  #     - '.env.dev'
+
+# volumes:
+#   redis:
+#   db:
