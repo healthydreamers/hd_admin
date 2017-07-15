@@ -15,10 +15,11 @@
 #
 
 class Article < ApplicationRecord
-  acts_as_votable  
+  acts_as_votable
+  acts_as_taggable
 
   after_commit :set_og_values, on: :create
-  #after_commit :slack_notification, on: :create
+  after_commit :slack_notification, on: :create
 
   belongs_to :topic
   belongs_to :user
@@ -38,7 +39,7 @@ class Article < ApplicationRecord
   end
 
   def slack_notification
-    Notifications::ArticleNotificationWorker.perform_in(1.minutes, friendly_id)
+    Notifications::ArticleNotificationWorker.perform_in(2.minutes, id)
   end
 
   def count_user_articles

@@ -18,6 +18,7 @@ gem 'redis', '~> 3.0'
 #Custom
 gem 'activeadmin', github: 'activeadmin'
 gem 'acts_as_commentable_with_threading'
+gem 'acts-as-taggable-on'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'devise', git: 'https://github.com/gogovan/devise.git', branch: 'rails-5.1'
 gem 'erubis'

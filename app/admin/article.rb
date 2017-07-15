@@ -9,7 +9,7 @@ ActiveAdmin.register Article do
   # permitted params
   #~~~~~~~~~/\~~~~~~~~~/\~~~~~~~~~/\~~~~~~~~~#
 
-  permit_params :title, :description, :url, :source_host, :slug, :topic_id, :user_id, :is_published, :is_featured
+  permit_params :title, :description, :url, :source_host, :slug, :topic_id, :tag_list, :user_id, :is_published, :is_featured
 
   #~~~~~~~~~/\~~~~~~~~~/\~~~~~~~~~/\~~~~~~~~~#
   # Form
@@ -22,6 +22,7 @@ ActiveAdmin.register Article do
       f.input :url
       f.input :source_host
       f.input :slug
+      f.input :tag_list
       f.input :topic
       f.input :user
       f.input :cached_comments_count
@@ -40,6 +41,7 @@ ActiveAdmin.register Article do
   filter :source_host
   filter :slug
   filter :topic
+  filter :tags
   filter :user
   filter :cached_comments_count
   filter :is_published
@@ -59,6 +61,7 @@ ActiveAdmin.register Article do
     column :source_host
     column :slug
     column :topic
+    column :tag_list
     column :cached_comments_count
     column :user
     column :is_published
