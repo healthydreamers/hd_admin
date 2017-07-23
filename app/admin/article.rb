@@ -22,6 +22,7 @@ ActiveAdmin.register Article do
       f.input :url
       f.input :source_host
       f.input :slug
+      f.input :image_url
       f.input :tag_list
       f.input :topic
       f.input :user
