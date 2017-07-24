@@ -31,7 +31,7 @@ class Article < ApplicationRecord
   scope    :unpublished,  -> { where(articles: { is_published: false }) }
 
   extend FriendlyId
-	friendly_id :title, use: :slugged
+  friendly_id :title, use: :slugged
 
 
   def set_og_values
@@ -46,10 +46,21 @@ class Article < ApplicationRecord
     "User.articles.count"
   end
 
-	private
+  def post_to_facebook
+    page_graph = Koala::Facebook::API.new(ENV["access_token"])
+    page_graph.put_wall_post(description, {
+      name: title,
+      link: "https://www.healthydreamers.com/" + slug + "?utm_source=healthydreamers&utm_medium=facebook",
+      caption: title,
+      #description: "Healthy Dreamers is a curation of articles & videos to help you follow a Healthy, Wealthy & Wise life.",
+      picture: image_url
+    }, ENV["page_id"])
+  end
 
+  private
+  
   def should_generate_new_friendly_id?
-  	slug.nil? || title_changed?
-	end
+    slug.nil? || title_changed?
+  end
 
 end

@@ -135,4 +135,12 @@ ActiveAdmin.register Article do
       Article.where(id: ids).update_all(is_published: inputs[:is_published])
     redirect_to collection_path, notice: "Status updated successfully"
   end
+  
+  batch_action :facebook do |ids|
+    batch_action_collection.find(ids).each do |article|
+      article.post_to_facebook
+    end
+    redirect_to collection_path, notice: "The article have been posted to facebook."
+  end
+
 end
