@@ -48,7 +48,7 @@ class Article < ApplicationRecord
 
   def post_to_facebook
     page_graph = Koala::Facebook::API.new(ENV["access_token"])
-    page_graph.put_wall_post("#{title} shared by #{source_host}/?utm_source=healthydreamers&utm_medium=facebook", {
+    page_graph.put_wall_post("#{title} shared by #{source_host}", {
       name: title,
       link: "https://www.healthydreamers.com/articles/" + slug + "?utm_source=healthydreamers&utm_medium=facebook",
       caption: title,
