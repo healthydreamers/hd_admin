@@ -50,7 +50,7 @@ class Article < ApplicationRecord
     page_graph = Koala::Facebook::API.new(ENV["access_token"])
     page_graph.put_wall_post(description, {
       name: title,
-      link: "https://www.healthydreamers.com/" + slug + "?utm_source=healthydreamers&utm_medium=facebook",
+      link: "https://www.healthydreamers.com/articles/" + slug + "?utm_source=healthydreamers&utm_medium=facebook",
       caption: title,
       #description: "Healthy Dreamers is a curation of articles & videos to help you follow a Healthy, Wealthy & Wise life.",
       picture: image_url
