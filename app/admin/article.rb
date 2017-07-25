@@ -9,7 +9,7 @@ ActiveAdmin.register Article do
   # permitted params
   #~~~~~~~~~/\~~~~~~~~~/\~~~~~~~~~/\~~~~~~~~~#
 
-  permit_params :title, :description, :url, :source_host, :slug, :topic_id, :tag_list, :user_id, :is_published, :is_featured
+  permit_params :title, :description, :url, :image_url, :source_host, :slug, :topic_id, :tag_list, :user_id, :is_published, :is_featured
 
   #~~~~~~~~~/\~~~~~~~~~/\~~~~~~~~~/\~~~~~~~~~#
   # Form
